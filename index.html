@@ -9,22 +9,23 @@
 <body>
     <header>
         <!-- timer countdown will show here -->
-        <h3>Time: 
-            <div id="timeLeft">75</div>
-        </h3>
+        <h3>Time:<div id="timeLeft">0</div></h3>
     </header>
 
 
     <!--div for the text question and content that goes in the center of the screen-->
      <main>
+         <div id = "beginingPrompt">
         <h1>Coding Quiz Challenge</h1>
         <p>Try to get all of the questions right, your score will be counted and tracked on a high schore board.</p>
         <button class="startbutton">
         Begin
         </button>
+        </div>
+    <div id = "questionDisplay"></div>
     </main>
      
+    <script src="questions.js"></script>
     <script src="script.js"></script>
-     
 </body>
 </html>

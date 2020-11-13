@@ -26,7 +26,6 @@ h1 {
     font-size: 2em;
     font-weight: bold;
     color: #ffffff;
-
 }
 
 h3{
@@ -37,4 +36,7 @@ button{
 background-color: aquamarine;
 border-radius: 10px;
 font-size: 20px;
+}
+ul{
+    list-style: none;
 }
