@@ -86,70 +86,74 @@ function writeQuestions(){
 
     questionDisplay.append(questionText);
     questionDisplay.append(answerList);
-}
-//had to seperate the functions so that one would create the elements,
-//and one would change their data.
-function writeNextQuestion(){
-    questionText.innerText = questions[questionIndex].title;
-    for(i = 0; i < questions[questionIndex].choices.length; i++){
-        listButton.id = "option" + i.toString();
-        listButton.innerText = questions[questionIndex].choices[i];  
-        list.append(listButton);
-        answerList.append(list);
-    }
 
+    addListeners();
+}
+//new function for clearing the buttons
+function clearButtons(){
+    option0.remove();
+    option1.remove();
+    option2.remove();
+    option3.remove();
+    questionText.remove();
+}
+function addListeners(){
+    option0.addEventListener("click", function(e){
+        var buttonSelected = option0.innerText;
+        if(buttonSelected != questions[questionIndex].answer){
+            timeLeft = timeLeft - 15;
+            if (timeLeft < 0){
+                timeLeft = 0;
+            }
+        } else{
+            questionIndex++
+            clearButtons();
+            writeQuestions();
+        }
+    })
+    option1.addEventListener("click", function(e){
+        var buttonSelected = option1.innerText;
+        if(buttonSelected != questions[questionIndex].answer){
+            timeLeft = timeLeft - 15;
+            if (timeLeft < 0){
+                timeLeft = 0;
+            }
+        } else{
+            questionIndex++
+            clearButtons();
+            writeQuestions();
+        }
+    })
+    option2.addEventListener("click", function(e){
+        var buttonSelected = option2.innerText;
+        if(buttonSelected != questions[questionIndex].answer){
+            timeLeft = timeLeft - 15;
+            if (timeLeft < 0){
+                timeLeft = 0;
+            }
+        } else{
+            questionIndex++
+            clearButtons();
+            writeQuestions();
+        }
+    })
+    option3.addEventListener("click", function(e){
+        var buttonSelected = option3.innerText;
+        if(buttonSelected != questions[questionIndex].answer){
+            timeLeft = timeLeft - 15;
+            if (timeLeft < 0){
+                timeLeft = 0;
+            }
+        } else{
+            questionIndex++
+            clearButtons();
+            writeQuestions();
+        }
+    })
 }
 
 //eventlistener to start the quiz then the user presses the start button
 BeginButton.addEventListener("click", function(e){
     startQuiz();
-        option0.addEventListener("click", function(e){
-            var buttonSelected = option0.innerText;
-            if(buttonSelected != questions[questionIndex].answer){
-                timeLeft = timeLeft - 15;
-                if (timeLeft < 0){
-                    timeLeft = 0;
-                }
-            } else{
-                questionIndex++
-                writeNextQuestion();
-            }
-        })
-        option1.addEventListener("click", function(e){
-            var buttonSelected = option1.innerText;
-            if(buttonSelected != questions[questionIndex].answer){
-                timeLeft = timeLeft - 15;
-                if (timeLeft < 0){
-                    timeLeft = 0;
-                }
-            } else{
-                questionIndex++
-                writeNextQuestion();
-            }
-        })
-        option2.addEventListener("click", function(e){
-            var buttonSelected = option2.innerText;
-            if(buttonSelected != questions[questionIndex].answer){
-                timeLeft = timeLeft - 15;
-                if (timeLeft < 0){
-                    timeLeft = 0;
-                }
-            } else{
-                questionIndex++
-                writeNextQuestion();
-            }
-        })
-        option3.addEventListener("click", function(e){
-            var buttonSelected = option3.innerText;
-            if(buttonSelected != questions[questionIndex].answer){
-                timeLeft = timeLeft - 15;
-                if (timeLeft < 0){
-                    timeLeft = 0;
-                }
-            } else{
-                questionIndex++
-                writeNextQuestion();
-            }
-        })
-    
 });
+
