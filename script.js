@@ -1,11 +1,10 @@
 
-//getting the information and buttons from the html
+//variables+++++++++++++++++++++++++++++++++++++++++++++++++++++
 var BeginButton = document.querySelector(".startbutton");
 var MainContent = document.querySelector("main");
 var Time = document.querySelector("#timeLeft");
 var beginingPrompt = document.querySelector("#beginingPrompt")
 var questionDisplay = document.querySelector("#questionDisplay");
-//this is where variables will be created to be used in the quiz
 var timeLeft = questions.length * 15;
 var timer;
 var questionIndex = 0;
@@ -13,7 +12,7 @@ var listButton;
 var list;
 var questionText;
 var answerList;
-
+//Functions++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var questions = [
     {
         title: "What is the HTML tag under which one can write the JavaScript code?",
@@ -55,7 +54,7 @@ function decrement(){
     {
         timeLeft = 0;
         clearInterval(timer);
-        //make gameover thing here
+        location.reload();
     }
 }
 
@@ -74,6 +73,19 @@ function startQuiz(){
 function writeQuestions(){
     questionText = document.createElement("p");
     answerList = document.createElement("ul");
+    //if statement checks if your index is a number higher than the number of questions in the quiz
+    if (questionIndex >= questions.length){
+        var score = timeLeft;
+        var oldScore = localStorage.getItem("score");
+        if (localStorage.getItem("score") != null){
+            if (oldScore < score){
+                localStorage.setItem("score", score);
+            }
+        } else{
+            localStorage.setItem("score", score);
+        }
+        window.location.replace("C:/Users/maver/OneDrive/Documents/BootcampProjects/Programming-Quiz/HighScoreFiles/HighScore.html")
+    }
         questionText.innerText = questions[questionIndex].title;
         for(i = 0; i < questions[questionIndex].choices.length; i++){
             list = document.createElement("li");
@@ -91,12 +103,15 @@ function writeQuestions(){
 }
 //new function for clearing the buttons
 function clearButtons(){
-    option0.remove();
-    option1.remove();
-    option2.remove();
-    option3.remove();
+    var smite = document.querySelectorAll("button");
+    for (var i = 0; i < smite.length; i++){
+        smite[i].remove();
+    }
     questionText.remove();
 }
+//needed to add a function that does all of the even listeners for the answer buttons
+//because due to the buttons being frequently removed and added, these would only
+//work once as standalone functions. 
 function addListeners(){
     option0.addEventListener("click", function(e){
         var buttonSelected = option0.innerText;
@@ -152,8 +167,9 @@ function addListeners(){
     })
 }
 
-//eventlistener to start the quiz then the user presses the start button
+//Script+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 BeginButton.addEventListener("click", function(e){
     startQuiz();
+    
 });
 
