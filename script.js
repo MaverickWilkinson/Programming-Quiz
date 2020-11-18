@@ -38,6 +38,11 @@ var questions = [
         title: "How do you call a function named 'myFunction'?",
         choices: ["call myFunction()", "call function myFunction()", "myFunction()", "void 'myFunction()' "],
         answer: "myFunction()"
+    },
+    {
+        title:"Does this quiz support any number of potential question answers, rather than being restricted to 4?",
+        choices: ["Yes", "absolutely", "I would certainly hope so", "probably, and if it does, this answer would likely be the one that doesn't subtract from my score despite also saying yes.", "no."],
+        answer: "probably, and if it does, this answer would likely be the one that doesn't subtract from my score despite also saying yes."
     }
     // etc.
 ];
